@@ -4,9 +4,9 @@
  *ALSO THIS CRON IS RESPONSIBLE FOR THE CANCELED RESERVATIONS 
 */
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include 'db_connection.php';
 include 'inc/simple_html_dom.php';
@@ -24,6 +24,7 @@ $port   = 993; // adjust according to server settings
 
 $imapConn = imap_open('{'.$server.'/notls}', $user, $pass);
 $crondateCheck = date('j F Y', strtotime(date('j F Y') . " -7 days"));
+// $crondateCheck = "5 August 2022"; 
 $mails = imap_search($imapConn,'SINCE "'.$crondateCheck.'"' );
 
 if($mails && count($mails) > 0){
@@ -72,6 +73,9 @@ if($mails && count($mails) > 0){
 					$datetime =  trim($mailSentDate);
 					$explodeDate = explode(" ", $datetime);
 					$mailDate = date('Y-m-d',strtotime($explodeDate[0])); 
+
+					// reply_to eamil DATA 
+					$reply_to = $header->reply_to[0]->mailbox.'@'.$header->reply_to[0]->host;
 
 					//GET PROPERTY 
 					$thElementCode = $html->find('th');
@@ -253,7 +257,7 @@ if($mails && count($mails) > 0){
 					$propertyId = $propertyNameData[0]['PropertyID'];
 
 					// INSERT DATA IN AirbnbBookings
-					$insert_data = $db->query('INSERT into AirbnbBookings ( PropertyName, PropertyId, Source, Amount, BookingDate, CheckInDate, Nights, CheckOutDate , NightlyRate, CleaningFee, ConfirmationCode, Guest, Type ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', $propertyName, $propertyId, 'VRBO', $amount, $mailDate, $new_checkin, $nights, $new_checkout, $finalNightlyRate, $finalcleaningFee, trim($ReservationID), trim($guestName), 'Reservation' );
+					$insert_data = $db->query('INSERT into AirbnbBookings ( PropertyName, PropertyId, Source, Amount, BookingDate, CheckInDate, Nights, CheckOutDate , NightlyRate, CleaningFee, ConfirmationCode, Guest, Type, VRBOresponseemail ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', $propertyName, $propertyId, 'VRBO', $amount, $mailDate, $new_checkin, $nights, $new_checkout, $finalNightlyRate, $finalcleaningFee, trim($ReservationID), trim($guestName), 'Reservation', $reply_to );
 				}
 			}
 		}
