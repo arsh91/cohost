@@ -5,9 +5,9 @@
  *SEND EMAIL TO COHOST AND SAVE DATA IN "emailqueue" WITH TYPE "cohost_airbnbbooking_notification" 
 */
 
-// ini_set('display_errors', 1);
-// ini_set('display_startup_errors', 1);
-// error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include 'db_connection.php';
 include 'inc/simple_html_dom.php';
 require_once('Vendor/PHPMailer/src/PHPMailer.php');
