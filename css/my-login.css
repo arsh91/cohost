@@ -1,0 +1,129 @@
+html,body {
+	height: 100%;
+}
+
+body.my-login-page {
+	background-color: #fff;
+	font-size: 14px;
+}
+
+.my-login-page .brand {
+	width: 170px;
+	height: 180px;
+	overflow: hidden;
+	margin: 40px auto 20px auto;
+	position: relative;
+	z-index: 1;
+}
+.my-login-page .company_title {
+    /* float: left; */
+	display: flex;
+	justify-content: center;
+    width: 100%;
+    margin: 0px 0px 20px 0px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+.my-login-page .brand img {
+	width: 100%;
+}
+.reserved_table {
+	max-height: 300px;
+	overflow: hidden;
+	overflow-y: scroll;
+	margin-bottom: 15px;
+}
+/* .my-login-page .card-wrapper {
+	width: 400px;
+} */
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+}
+
+.my-login-page .card .card-title {
+	margin-bottom: 30px;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}
+
+.openTicketDetailModal{cursor: pointer;}
+.titleStyle {
+    font-weight: 500;
+}
+#maintainence_tickets.dataTable tbody th, #maintainence_tickets.dataTable tbody td{
+	padding: 6px;
+}
+.closedbutton {
+	padding: 6px;
+}
+@media screen and (max-width: 425px) {
+	.my-login-page .card-wrapper {
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.my-login-page .card.fat {
+		padding: 0;
+	}
+
+	.my-login-page .card.fat .card-body {
+		padding: 15px;
+	}
+}
+.linkTable{
+	max-width: 400px;
+  }
+
+.morecontent span {
+	display:none;
+	}
+	.morelink {
+	display:block;
+	}
+	
+	.technotesDiv {
+	  inline-size: 330px;
+	  overflow-wrap: break-word;
+	}
+	a.maintenanceHistoryTable{
+	  color: rgb(0 0 0 / 90%);
+	  display: block;
+	}
+	a.maintenanceHistoryTable:hover {
+		color: rgb(0 0 0 / 90%);
+		text-decoration: none;
+		 
+		
+	}
+	/* td a.maintenanceHistoryTable { 
+		display: block; 
+	} */
+	.lostErrorMsg {
+		font-size: 16px;
+		text-align: center;
+	  }
